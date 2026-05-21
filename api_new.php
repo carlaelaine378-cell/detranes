@@ -84,11 +84,9 @@ $result = curl_exec($ch);
 $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 if (curl_errno($ch)) {
     $err = curl_error($ch);
-    curl_close($ch);
     echo json_encode(['error' => 'Erro Curl: ' . $err]);
     exit;
 }
-curl_close($ch);
 if ($code === 200 && $result) {
     $json = json_decode($result, true);
     if (is_array($json)) { echo json_encode($json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); exit; }
