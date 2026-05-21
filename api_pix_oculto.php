@@ -140,7 +140,6 @@ $postData = [
    $response = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     $curlErr = curl_error($ch);
-    curl_close($ch);
 
     if ($response === false) {
         echo json_encode(['error' => 'Erro na comunicação com a API de PIX: ' . $curlErr]);
@@ -210,6 +209,5 @@ function qr_base64_oculto($payload) {
       CURLOPT_SSL_VERIFYPEER => false,
     ]);
     $png = curl_exec($ch);
-    curl_close($ch);
     return $png ? ('data:image/png;base64,' . base64_encode($png)) : '';
 }
