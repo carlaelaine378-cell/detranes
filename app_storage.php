@@ -41,7 +41,6 @@ function _s_redis_call($op, $key, $value = null) {
 
     $body = curl_exec($ch);
     $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
     return ['code' => $code, 'body' => $body];
 }
 
